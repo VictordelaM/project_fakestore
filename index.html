@@ -10,23 +10,27 @@
     <h1>SuperFakeStore</h1>
         <nav>
             <div class="input">
-                <input type="text" name="sucheingabe" id="inputText">
-                <select name="sortBy" id="sort">
+                <input type="text" name="sucheingabe" id="inputText" placeholder="Search by title">
+                <select name="sortBy" id="inputSort">
                     <option value="0">Preis aufsteigend</option>
                     <option value="1">Preis absteigend</option>
                 </select>
             </div>
             <div class="filter">
                 <p>Filter by Categories:</p>
-                <button>electronics</button>
-                <button>jewelery</button>
-                <button>men´s clothing</button>
-                <button>women´s clothing</button>
+                <button class="button" id="electronics" value="electronics">electronics</button>
+                <button class="button" id="jewelery" value="jewelery">jewelery</button>
+                <button class="button" id="men" value="men's clothing">men´s clothing</button>
+                <button class="button" id="women" value="women's clothing">women´s clothing</button>
             </div>
         </nav>
         <main>
+            <div id="output">
 
+            </div>
         </main>
     <script src="./assets/js/main.js"></script>
 </body>
 </html>
+
+
