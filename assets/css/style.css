@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: ß;
+    box-sizing: border-box;
+}
+h1{
+    color: orange;
+}
+
+img{
+    width: 15vw;
+    height: 30vh;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    height: 20vh;
+    width: 80vw;
+    justify-content: space-evenly;
+}
+
+.input{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.filter{
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.button{
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    background-color: orange;
+    font-size: 1.5rem;
+}
+
+#inputText{
+    width: 70%;
+    height: 150%;
+    font-size: 1.25rem;
+}
+
+#inputSort{
+    width: 20%;
+    height: 150%;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+#output{
+    margin-top: 2rem;
+    display: grid;
+    justify-content: space-evenly;
+    gap: 4rem;
+    width: 90vw;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+}
+
+.produktbox{
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    border: 1px solid grey;
+}
+
+.imgTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.551);
+}
+
+.priceBuy{
+    display: flex;
+    justify-content: space-evenly;
+}

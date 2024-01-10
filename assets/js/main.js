@@ -7,72 +7,76 @@ let buttonWomen = document.getElementById("women")
 let output = document.getElementById("output")
 let products = []
 
-searchInput.addEventListener("input", () => {
-    fetch('https://fakestoreapi.com/products')
-    .then((response) => response.json())
-    .then((data) => {
-        let list = data
+
+let refresh = (list) =>{
+
+    products = list.map(element => {
+        return `<div><img src="${element.image}"><p class="title">${element.title}</p><div><p class="price">$ ${element.price}</p><button class="addCart">Add to cart</button></div></div>`});
+    output.innerHTML = products
+}
+
+
+// searchInput.addEventListener("input", () => {
+//     fetch('https://fakestoreapi.com/products')
+//     .then((response) => response.json())
+//     .then((data) => {
+//         let list = data
+//         products = []
+//         let value = searchInput.value
+//         list.forEach(element => {
+//         if (element.title.toLowerCase().includes(value.toLowerCase())){
+//             products += `<div><img src="${element.image}"><p class="title">${element.title}</p><div><p class="price">$ ${element.price}</p><button class="addCart">Add to cart</button></div></div>`}
+//         }
+//         )
+//         output.innerHTML = products}
+//         )});
+
+
+let search = (list) => {
+    searchInput.addEventListener("input", () => {
         products = []
+
         let value = searchInput.value
-        list.forEach(element => {
+    list.forEach(element => {
         if (element.title.toLowerCase().includes(value.toLowerCase())){
             products += `<div><img src="${element.image}"><p class="title">${element.title}</p><div><p class="price">$ ${element.price}</p><button class="addCart">Add to cart</button></div></div>`}
         }
         )
         output.innerHTML = products}
-        )});
+    )}
 
-buttonElectronic.addEventListener("click", () => {
-    fetch('https://fakestoreapi.com/products')
-    .then((response) => response.json())
-    .then((data) => {
-        let list = data
-        products = []
-        let value = buttonElectronic.value
-        list.forEach(element => {
-        if (element.category == value){
-            products += `<div><img src="${element.image}"><p class="title">${element.title}</p><div><p class="price">$ ${element.price}</p><button class="addCart">Add to cart</button></div></div>`}
-        }
-        )
-        output.innerHTML = products}
-        )});
 
-buttonJewelery.addEventListener("click", () => {
-    fetch('https://fakestoreapi.com/products')
-    .then((response) => response.json())
-    .then((data) => {
-        let list = data
-        products = []
-        let value = buttonJewelery.value
-        console.log(value);
-        list.forEach(element => {
-        if (element.category == value){
-            products += `<div><img src="${element.image}"><p class="title">${element.title}</p><div><p class="price">$ ${element.price}</p><button class="addCart">Add to cart</button></div></div>`}})
-        output.innerHTML = products})})
+const buttonfunction = (category) =>{
+    category.addEventListener("click", () => {
+        fetch('https://fakestoreapi.com/products')
+        .then((response) => response.json())
+        .then((data) => {
+            let list = data
+            products = []
+            let value = category.value
+            list.forEach(element => {
+            if (element.category == value){
+                products += `<div class ="produktbox">
+                <div class="imgTitle">
+                    <img src="${element.image}">
+                    <p class="title">${element.title}</p>
+                </div>
+                <div class = "priceBuy">
+                    <p class="price">$ ${element.price}</p>
+                    <button class="addCart">Add to cart</button>
+                </div>
+            </div>`}})
+            output.innerHTML = products
+            
+        
+        })});
+}
+buttonfunction(buttonMen)
+buttonfunction(buttonWomen)
+buttonfunction(buttonElectronic)
+buttonfunction(buttonJewelery)
 
-buttonWomen.addEventListener("click", () => {
-    fetch('https://fakestoreapi.com/products')
-    .then((response) => response.json())
-    .then((data) => {
-        let list = data
-        products = []
-        let value = buttonWomen.value
-        list.forEach(element => {
-        if (element.category == value){
-            products += `<div><img src="${element.image}"><p class="title">${element.title}</p><div><p class="price">$ ${element.price}</p><button class="addCart">Add to cart</button></div></div>`}})
-        output.innerHTML = products})});
 
-buttonMen.addEventListener("click", () => {
-    fetch('https://fakestoreapi.com/products')
-    .then((response) => response.json())
-    .then((data) => {
-        let list = data
-        products = []
-        let value = buttonMen.value
-        list.forEach(element => {
-        if (element.category == value){
-            products += `<div><img src="${element.image}"><p class="title">${element.title}</p><div><p class="price">$ ${element.price}</p><button class="addCart">Add to cart</button></div></div>`}})
-        output.innerHTML = products})});
 
 
 const sortFunction = (list) => {
@@ -88,7 +92,16 @@ const sortFunction = (list) => {
                         break
                 }
                 products = list.map(element => {
-                    return `<div><img src="${element.image}"><p class="title">${element.title}</p><div><p class="price">$ ${element.price}</p><button class="addCart">Add to cart</button></div></div>`});
+                    return `<div class ="produktbox">
+                    <div class="imgTitle">
+                        <img src="${element.image}">
+                        <p class="title">${element.title}</p>
+                    </div>
+                    <div class = "priceBuy">
+                        <p class="price">$ ${element.price}</p>
+                        <button class="addCart">Add to cart</button>
+                    </div>
+                </div>`});
                 output.innerHTML = products
             })}
 
@@ -99,15 +112,23 @@ const sortFunction = (list) => {
 fetch('https://fakestoreapi.com/products')
     .then((response) => response.json())
     .then((data) => {
-
         console.log(data);
         let list = data
-        
-        console.log(list);
-        products = list.map(element => {
-            return `<div><img src="${element.image}"><p class="title">${element.title}</p><div><p class="price">$ ${element.price}</p><button class="addCart">Add to cart</button></div></div>`});
-        output.innerHTML = products
         sortFunction(list)
+        search(list)
+        products = list.map(element => {
+            return `<div class ="produktbox">
+            <div class="imgTitle">
+                <img src="${element.image}">
+                <p class="title">${element.title}</p>
+            </div>
+            <div class = "priceBuy">
+                <p class="price">$ ${element.price}</p>
+                <button class="addCart">Add to cart</button>
+            </div>
+        </div>`});
+        output.innerHTML = products
+        
     })
 
 
